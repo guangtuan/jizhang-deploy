@@ -1,0 +1,18 @@
+#/bin/bash
+
+currentPath=$(pwd)
+
+source .env
+
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>start loading latest code of server-side<<<<<<<<<<<<<<<<<<<<<<<<<<"
+
+rm -rf ${currentPath}/server-side/build
+git clone https://github.com/guangtuan/jizhang.git ${currentPath}/server-side/build
+
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>finish load latest code of server-side<<<<<<<<<<<<<<<<<<<<<<<<<<"
+
+docker rm -f $(docker ps -a | grep jizhang | awk '{print $1}')
+
+docker volume rm jizhang-mysql
+
+docker-compose up -d --force-recreate
