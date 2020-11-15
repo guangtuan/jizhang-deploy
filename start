@@ -9,6 +9,9 @@ echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>start loading latest code of server-side<<<<<<
 rm -rf ${currentPath}/server-side/build
 git clone https://github.com/guangtuan/jizhang.git ${currentPath}/server-side/build
 
+rm -rf ${currentPath}/front-end/build
+git clone https://github.com/guangtuan/jizhang-fe.git ${currentPath}/front-end/build
+
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>finish load latest code of server-side<<<<<<<<<<<<<<<<<<<<<<<<<<"
 
 docker rm -f $(docker ps -a | grep jizhang | awk '{print $1}')
