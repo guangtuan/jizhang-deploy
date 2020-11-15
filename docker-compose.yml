@@ -7,10 +7,22 @@ volumes:
     name: jizhang-redis
 
 services:
-  ui:
-    build: ./front-end/build/
+  mysql:
+    build:
+      context: ./mysql/
+    volumes:
+      - jizhang-mysql:/var/lib/mysql
     ports:
-      - "${JIZHANG_FE_PORT}:80"
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${JIZHANG_DB_PASSWORD}
+  redis:
+    build:
+      context: ./redis/
+    ports:
+      - "10087:6379"
+    volumes:
+      - jizhang-redis:/data
   api:
     build:
       context: ./server-side/build/
@@ -29,19 +41,9 @@ services:
     depends_on:
       - mysql
       - redis
-  mysql:
-    build:
-      context: ./mysql/
-    volumes:
-      - jizhang-mysql:/var/lib/mysql
+  ui:
+    build: ./front-end/build/
     ports:
-      - "3309:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${JIZHANG_DB_PASSWORD}
-  redis:
-    build:
-      context: ./redis/
-    ports:
-      - "10087:6379"
-    volumes:
-      - jizhang-redis:/data
+      - "${JIZHANG_FE_PORT}:80"
+    depends_on:
+      - api
