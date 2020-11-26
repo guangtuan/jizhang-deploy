@@ -65,13 +65,14 @@ DROP TABLE IF EXISTS `credit_card`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `credit_card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_bill` int(11) NOT NULL COMMENT '账单日',
-  `date_repay` int(11) NOT NULL COMMENT '还款日',
-  `amount_limit` int(11) NOT NULL COMMENT '额度，单位为分',
-  `created_at` datetime(3) NOT NULL,
-  `updated_at` datetime(3) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注名称',
+  `date_bill` int(11) DEFAULT NULL COMMENT '账单日',
+  `date_repay` int(11) DEFAULT NULL COMMENT '还款日',
+  `amount_limit` int(11) DEFAULT NULL COMMENT '额度，单位为分',
+  `created_at` datetime(3) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,4 +182,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-22 22:11:25
+-- Dump completed on 2020-11-26 21:13:40
