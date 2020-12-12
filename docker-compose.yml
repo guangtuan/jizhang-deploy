@@ -25,7 +25,7 @@ services:
       - jizhang-redis:/data
   api:
     build:
-      context: ./server-side/build/
+      context: ./server-side
     ports:
       - "${JIZHANG_SERVER_SIDE_PORT}:44444"
     environment:
@@ -42,7 +42,7 @@ services:
       - mysql
       - redis
   ui:
-    build: ./front-end/build/
+    build: ./front-end
     ports:
       - "${JIZHANG_FE_PORT}:80"
     depends_on:

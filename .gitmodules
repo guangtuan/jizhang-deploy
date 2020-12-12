@@ -1,0 +1,6 @@
+[submodule "server-side"]
+	path = server-side
+	url = https://github.com/guangtuan/jizhang.git
+[submodule "front-end"]
+	path = front-end
+	url = https://github.com/guangtuan/jizhang-fe.git
