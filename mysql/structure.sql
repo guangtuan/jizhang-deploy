@@ -66,8 +66,9 @@ CREATE TABLE `credit_card` (
   `amount_limit` int(11) DEFAULT NULL COMMENT '额度，单位为分',
   `created_at` datetime(3) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +91,7 @@ CREATE TABLE `detail` (
   `splited` tinyint(1) DEFAULT '0',
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,4 +181,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-16 21:59:21
+-- Dump completed on 2020-12-23 21:23:52
