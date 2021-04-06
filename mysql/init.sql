@@ -37,7 +37,7 @@ CREATE TABLE `account` (
   `updated_at` datetime(6) DEFAULT NULL,
   `init_amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,10 +93,8 @@ CREATE TABLE `detail` (
   `created_at` datetime(3) NOT NULL,
   `updated_at` datetime(3) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  `splited` tinyint(1) DEFAULT '0',
-  `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,4 +184,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-23 21:23:52
+-- Dump completed on 2021-04-06 21:41:05
