@@ -35,9 +35,9 @@ CREATE TABLE `account` (
   `description` varchar(255) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `init_amount` int(11) NOT NULL,
+  `init_amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,9 +71,9 @@ CREATE TABLE `credit_card` (
   `amount_limit` int(11) DEFAULT NULL COMMENT '额度，单位为分',
   `created_at` datetime(3) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='信用卡管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,38 @@ CREATE TABLE `detail` (
   `updated_at` datetime(3) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=466 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `event`
+--
+
+DROP TABLE IF EXISTS `event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '事件id',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '事件名称',
+  `created_at` datetime(3) NOT NULL COMMENT '事件发生时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `event_detail`
+--
+
+DROP TABLE IF EXISTS `event_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_detail` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `detail_id` int(11) DEFAULT NULL,
+  `created_at` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,14 +178,14 @@ DROP TABLE IF EXISTS `subject`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subject` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `tags` text CHARACTER SET utf8mb4,
+  `name` varchar(32) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `tags` text,
   `parent_id` int(11) DEFAULT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
   `created_at` datetime(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +203,7 @@ CREATE TABLE `user` (
   `nickname` varchar(32) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -184,4 +215,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-06 21:41:05
+-- Dump completed on 2021-06-06 21:23:45
